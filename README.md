@@ -109,7 +109,7 @@ Once both servers are running, open the URL displayed in your frontend terminal 
 
 ## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit issues, feature requests, or pull requests.
+Please feel free to submit issues, feature requests, or pull requests.
 
 ---
 
