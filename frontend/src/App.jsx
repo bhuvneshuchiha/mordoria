@@ -6,7 +6,6 @@ function App() {
 	return (
 		<div>
         <ParticleBackground/>
-			<h1>PORQUE MARIA</h1>
 			<ChatComponent />
 		</div>
 	);
