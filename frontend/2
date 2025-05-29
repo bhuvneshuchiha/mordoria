@@ -1,0 +1,140 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
+import axios from "axios";
+
+function ChatComponent() {
+	const [clientMessages, setClientMessages] = useState([]);
+	const [ai_emot, set_ai_emot] = useState("");
+	const [messages, setMessages] = useState([]);
+	const ws = useRef(null);
+
+	useEffect(() => {
+		ws.current = new WebSocket("http://localhost:8081/ws/v1/mordoria");
+
+		ws.current.onopen = () => {
+			console.log("Connected to the go backend");
+		};
+
+		ws.current.onmessage = (event) => {
+			console.log("RAW event.data:", event.data);
+			let messageChat = JSON.parse(event.data);
+			console.log(messageChat);
+			// setMessages((prev) => [...prev, ...messageChat]);
+			setMessages((prev) => {
+				const updated = [...prev, ...messageChat];
+				console.log("Updated messages array: ", updated);
+				console.log("Originalllllll messages array: ", messages);
+				return updated;
+			});
+		};
+
+		ws.current.onerror = (error) => {
+			console.error("Error encountered", error);
+		};
+
+		ws.current.onclose = () => {
+			console.log("Websocket connection closed");
+		};
+
+		return () => {
+			ws.current.close();
+		};
+	}, []);
+
+	useEffect(() => {
+		// const intervalId = setInterval(() => {
+		// 	setMessages((prev) => {
+		// 		sendAllChats(prev);
+		// 		return [];
+		// 	});
+		// }, 10000);
+
+		const intervalId = setInterval(async () => {
+			await sendAllChats();
+			setMessages([]);
+		}, 10000);
+		return () => {
+			clearInterval(intervalId);
+		};
+	}, []);
+
+	const handleSend = () => {
+		if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+			ws.current.send(
+				JSON.stringify({
+					client_id: "kdkdk",
+					payload: [
+						{
+							payload: clientMessages,
+							ai_emot_score: ai_emot.toString(),
+						},
+					],
+				}),
+			);
+			setClientMessages([]);
+		}
+	};
+
+	const sendAllChats = async () => {
+		let sum = 0;
+		for (let i = 0; i < messages.length; i++) {
+			sum += parseInt(messages[i].ai_emot_score);
+		}
+		console.log("Message array", messages);
+
+		const average_ai_emot_score = sum / messages.length;
+		console.log("Average", average_ai_emot_score);
+		try {
+			const response = await axios.post(
+				"http://localhost:8081/v1/mordoria/chat_summarize",
+
+				{
+					client_id: "1",
+					payload: [
+						{
+							payload: messages,
+							ai_emot_score: average_ai_emot_score
+						},
+					],
+					ai_emot_score: String(average_ai_emot_score),
+				},
+			);
+
+			console.log("Response", response.data);
+		} catch (error) {
+			console.log("Error: ", error);
+		}
+	};
+
+	return (
+		<div>
+			<input
+				type="text"
+				value={clientMessages}
+				onChange={(e) => setClientMessages(e.target.value)}
+				placeholder="Type your message"
+			/>
+			<input
+				type="text"
+				value={ai_emot}
+				onChange={(e) => set_ai_emot(e.target.value)}
+				placeholder="AI Emot Score"
+			/>
+			<button onClick={handleSend}>Send</button>
+
+			<div>
+				<h3>Received Messages:</h3>
+				<ul>
+					{messages.map((item, index) => (
+						<li key={index}>
+							Message: {item.payload} | AI Emot Score: {item.ai_emot_score}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	);
+}
+
+export default ChatComponent;
