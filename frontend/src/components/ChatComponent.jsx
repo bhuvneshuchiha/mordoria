@@ -17,6 +17,7 @@ function ChatComponent() {
 	useEffect(() => {
 		ws.current = new WebSocket("http://localhost:8081/ws/v1/mordoria");
 
+
 		ws.current.onopen = () => {
 			console.log("Connected to the go backend");
 			setIsConnected(true);
