@@ -90,7 +90,7 @@ npm run dev
 
 ### 🌐 Access the Game
 
-Once both servers are running, open the URL displayed in your frontend terminal (typically `http://localhost:3000`) and start playing!
+Once both servers are running, open the URL displayed in your frontend terminal (typically `http://localhost:5173`) and start playing!
 
 ---
 
