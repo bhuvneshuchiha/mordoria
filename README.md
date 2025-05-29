@@ -37,8 +37,10 @@
 ### 🔑 API Setup (IMPORTANT)
 
 1. Visit [Groq](https://groq.com) and create an account
-2. Generate your API key
-3. Create a `.env` file in your project's root directory:
+2. Click on Dev Console on the top right.
+3. Click on API keys on the top right.
+4. Generate your API key
+5. Create a `.env` file in your project's root directory:
    ```env
    GROQ_API_KEY="your-api-key-here"
    ```
