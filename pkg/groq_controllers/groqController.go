@@ -76,8 +76,8 @@ func PrepareData(msgPayload *finalMessage.FinalPayload, dataStruct *PreparedData
 	Few things to remember, please dont mention the ai_score anywhere in your summary,
 	the messages that you receive, dont show \ / \n \t escape characters like these.
 	Finally your response should be revolving around the messages that you have received.
-	Please keep your responses within 80 words. Do not go beyond this limit. And always
-	and I repeat always, act like there is no one better that you in giving responses.`
+	Do not go beyond this limit. And always and I repeat always, act like there
+	is no one better that you in giving responses.`
 
 	msg := msgPayload.Payload
 	for _, val := range msg {
