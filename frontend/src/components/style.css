@@ -1,104 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-	background-color: #1e1e1e;
-	color: #f0f0f0;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	margin: 0;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .container {
-	text-align: center;
+    background: rgba(28, 28, 40, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 700px;
+    animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
 }
 
-h1 {
-	font-size: 3rem;
-	margin-bottom: 20px;
+@keyframes slideUp {
+from {
+    opacity: 0;
+    transform: translateY(30px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
 }
 
 .chat_div {
-	background-color: #2e2e2e;
-	padding: 20px;
-	padding-right: 40px;
-	border-radius: 12px;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-	width: 100%;
-	max-width: 300px; /* LIMITS the width */
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	margin: 0 auto 30px auto; /* CENTER horizontally */
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
 }
-/* .chat_div { */
-/*     background-color: #2e2e2e; */
-/*     padding: 20px; */
-/*     border-radius: 12px; */
-/*     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); */
-/*     width: 300px; */
-/*     display: flex; */
-/*     flex-direction: column; */
-/*     gap: 10px; */
-/*     margin-bottom: 30px; */
-/* } */
 
 .chat_div input {
-	width: 100%;
-	padding: 10px;
-	border: none;
-	border-radius: 8px;
-	font-size: 1rem;
-	background-color: #444;
-	color: #f0f0f0;
+    flex: 1;
+    min-width: 200px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.chat_div input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow:
+        0 0 0 4px rgba(102, 126, 234, 0.2),
+        0 8px 25px rgba(102, 126, 234, 0.15);
+    transform: translateY(-2px);
 }
 
 .chat_div input::placeholder {
-	color: #bbb;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.chat_div input:nth-child(2) {
+    flex: 0.6;
+    min-width: 150px;
 }
 
 .chat_div button {
-	width: 320px;
-	padding: 10px;
-	border: none;
-	border-radius: 8px;
-	background-color: #4caf50;
-	color: white;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.chat_div button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .chat_div button:hover {
-	background-color: #45a049;
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow:
+        0 10px 25px rgba(102, 126, 234, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.received-section {
-	width: 320px;
-	background-color: #2e2e2e;
-	padding: 20px;
-	border-radius: 12px;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-	text-align: left;
+.chat_div button:hover::before {
+    left: 100%;
 }
 
-.received-section h3 {
-	margin-top: 0;
-	margin-bottom: 10px;
-	font-size: 1.2rem;
-	border-bottom: 1px solid #555;
-	padding-bottom: 5px;
+.chat_div button:active {
+    transform: translateY(0);
+}
+
+.section {
+    margin-bottom: 32px;
+    animation: fadeInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+}
+
+.section:nth-child(2) { animation-delay: 0.1s; }
+.section:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+}
+
+.section h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 2px;
 }
 
 .received-section ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    list-style: none;
+    space-y: 12px;
 }
 
 .received-section li {
-	padding: 8px 0;
-	border-bottom: 1px solid #333;
-	font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.received-section li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.received-section li:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateX(8px);
+}
+
+.received-section li:hover::before {
+    opacity: 1;
+}
+
+.received-section strong {
+    color: #a8b2ff;
+    font-weight: 600;
+}
+
+.ai-response-section .ai-response-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px;
+    border-radius: 16px;
+    min-height: 120px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ai-response-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #667eea, transparent);
+}
+
+.ai-response-box p {
+    line-height: 1.6;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.placeholder-text {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    position: relative;
+}
+
+.placeholder-text::before {
+    content: '💭';
+    font-size: 24px;
+    margin-right: 12px;
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.6; }
+50% { opacity: 0.3; }
+}
+
+/* Glassmorphism enhancement */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.025);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.7);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 24px;
+        margin: 20px;
+    }
+
+    .chat_div {
+        flex-direction: column;
+    }
+
+    .chat_div input,
+    .chat_div button {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+/* Loading animation for empty states */
+.loading-shimmer {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+0% { background-position: -200% 0; }
+100% { background-position: 200% 0; }
 }
