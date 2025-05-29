@@ -54,8 +54,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd project_mordoria
+   git clone https://github.com/bhuvneshuchiha/mordoria.git
+   cd mordoria
    ```
 
 2. **Install Go Air** (if not already installed)
