@@ -17,7 +17,6 @@ function ChatComponent() {
 	useEffect(() => {
 		ws.current = new WebSocket("http://localhost:8081/ws/v1/mordoria");
 
-
 		ws.current.onopen = () => {
 			console.log("Connected to the go backend");
 			setIsConnected(true);
@@ -124,21 +123,23 @@ function ChatComponent() {
 		<div className="container">
 			{/* Animated Title */}
 			<h1 className="animated-title">
-				{'MOTHER PROMPTER'.split('').map((letter, index) => (
+				{"MOTHER PROMPTER".split("").map((letter, index) => (
 					<span
 						key={index}
 						className="bouncing-letter"
-						style={{animationDelay: `${index * 0.1}s`}}
+						style={{ animationDelay: `${index * 0.1}s` }}
 					>
-						{letter === ' ' ? '\u00A0' : letter}
+						{letter === " " ? "\u00A0" : letter}
 					</span>
 				))}
 			</h1>
 
 			{/* Connection Status Indicator */}
-			<div className={`connection-status ${isConnected ? 'connected' : 'disconnected'}`}>
+			<div
+				className={`connection-status ${isConnected ? "connected" : "disconnected"}`}
+			>
 				<div className="status-dot"></div>
-				<span>{isConnected ? 'Connected' : 'Disconnected'}</span>
+				<span>{isConnected ? "Connected" : "Disconnected"}</span>
 			</div>
 
 			<div className="chat_div">
@@ -161,7 +162,7 @@ function ChatComponent() {
 				<button
 					onClick={handleSend}
 					disabled={!isConnected || !clientMessages.trim()}
-					className={!isConnected || !clientMessages.trim() ? 'disabled' : ''}
+					className={!isConnected || !clientMessages.trim() ? "disabled" : ""}
 				>
 					Send
 				</button>
@@ -176,7 +177,7 @@ function ChatComponent() {
 				) : (
 					<ul>
 						{messages.map((item, index) => (
-							<li key={index} style={{animationDelay: `${index * 0.1}s`}}>
+							<li key={index} style={{ animationDelay: `${index * 0.1}s` }}>
 								<strong>Message:</strong> {item.payload} |
 								<strong> AI Emot Score:</strong> {item.ai_emot_score}
 							</li>
