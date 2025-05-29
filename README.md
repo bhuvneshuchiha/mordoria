@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/21bc7577-dd9f-424f-a5bf-d10266e7a5b4)
+
 # 🎭 Project Mordoria
 ### AI-Powered Collaborative Chat Game
 
