@@ -339,3 +339,71 @@ from {
 0% { background-position: -200% 0; }
 100% { background-position: 200% 0; }
 }
+
+
+
+
+
+
+
+
+/* Animated Title */
+.animated-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.bouncing-letter {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation:
+        bounce 2s ease-in-out infinite,
+        colorShift 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    40% {
+        transform: translateY(-15px) scale(1.1);
+    }
+    60% {
+        transform: translateY(-7px) scale(1.05);
+    }
+}
+
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.bouncing-letter:hover {
+    animation-duration: 0.5s;
+    transform: translateY(-20px) scale(1.2) !important;
+    text-shadow: 0 0 50px currentColor;
+}
+
+/* Enhanced title glow effect */
+.animated-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}

@@ -121,12 +121,23 @@ function ChatComponent() {
 
 	return (
 		<div className="container">
+			{/* Animated Title */}
+			<h1 className="animated-title">
+				{'PORQUE MARIA'.split('').map((letter, index) => (
+					<span
+						key={index}
+						className="bouncing-letter"
+						style={{animationDelay: `${index * 0.1}s`}}
+					>
+						{letter === ' ' ? '\u00A0' : letter}
+					</span>
+				))}
+			</h1>
+
 			{/* Connection Status Indicator */}
-			<div
-				className={`connection-status ${isConnected ? "connected" : "disconnected"}`}
-			>
+			<div className={`connection-status ${isConnected ? 'connected' : 'disconnected'}`}>
 				<div className="status-dot"></div>
-				<span>{isConnected ? "Connected" : "Disconnected"}</span>
+				<span>{isConnected ? 'Connected' : 'Disconnected'}</span>
 			</div>
 
 			<div className="chat_div">
@@ -149,7 +160,7 @@ function ChatComponent() {
 				<button
 					onClick={handleSend}
 					disabled={!isConnected || !clientMessages.trim()}
-					className={!isConnected || !clientMessages.trim() ? "disabled" : ""}
+					className={!isConnected || !clientMessages.trim() ? 'disabled' : ''}
 				>
 					Send
 				</button>
@@ -164,7 +175,7 @@ function ChatComponent() {
 				) : (
 					<ul>
 						{messages.map((item, index) => (
-							<li key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+							<li key={index} style={{animationDelay: `${index * 0.1}s`}}>
 								<strong>Message:</strong> {item.payload} |
 								<strong> AI Emot Score:</strong> {item.ai_emot_score}
 							</li>
@@ -190,6 +201,76 @@ function ChatComponent() {
 			</div>
 		</div>
 	);
+	// 	<div className="container">
+	// 		{/* Connection Status Indicator */}
+	// 		<div
+	// 			className={`connection-status ${isConnected ? "connected" : "disconnected"}`}
+	// 		>
+	// 			<div className="status-dot"></div>
+	// 			<span>{isConnected ? "Connected" : "Disconnected"}</span>
+	// 		</div>
+	//
+	// 		<div className="chat_div">
+	// 			<input
+	// 				type="text"
+	// 				value={clientMessages}
+	// 				onChange={(e) => setClientMessages(e.target.value)}
+	// 				onKeyPress={handleKeyPress}
+	// 				placeholder="Type your message..."
+	// 				disabled={!isConnected}
+	// 			/>
+	// 			<input
+	// 				type="text"
+	// 				value={ai_emot}
+	// 				onChange={(e) => set_ai_emot(e.target.value)}
+	// 				onKeyPress={handleKeyPress}
+	// 				placeholder="AI Emotion Score"
+	// 				disabled={!isConnected}
+	// 			/>
+	// 			<button
+	// 				onClick={handleSend}
+	// 				disabled={!isConnected || !clientMessages.trim()}
+	// 				className={!isConnected || !clientMessages.trim() ? "disabled" : ""}
+	// 			>
+	// 				Send
+	// 			</button>
+	// 		</div>
+	//
+	// 		<div className="section received-section">
+	// 			<h3>Received Messages</h3>
+	// 			{messages.length === 0 ? (
+	// 				<div className="empty-state">
+	// 					<p className="placeholder-text">No messages yet. Start typing!</p>
+	// 				</div>
+	// 			) : (
+	// 				<ul>
+	// 					{messages.map((item, index) => (
+	// 						<li key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+	// 							<strong>Message:</strong> {item.payload} |
+	// 							<strong> AI Emot Score:</strong> {item.ai_emot_score}
+	// 						</li>
+	// 					))}
+	// 				</ul>
+	// 			)}
+	// 		</div>
+	//
+	// 		<div className="section ai-response-section">
+	// 			<h3>AI Summarized Response</h3>
+	// 			<div className="ai-response-box">
+	// 				{isLoading ? (
+	// 					<div className="loading-container">
+	// 						<div className="loading-shimmer"></div>
+	// 						<p className="loading-text">Generating AI summary...</p>
+	// 					</div>
+	// 				) : ai_response ? (
+	// 					<p className="response-text">{ai_response}</p>
+	// 				) : (
+	// 					<p className="placeholder-text">No summary yet.</p>
+	// 				)}
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	// );
 }
 
 export default ChatComponent;
