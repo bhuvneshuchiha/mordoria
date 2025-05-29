@@ -33,6 +33,7 @@
 - Go installed on your system
 - Node.js and npm
 - Air (Go live reload tool)
+- In case you want to connect with different PCs/laptops/phones, please replace "localhost" in the chatComponent.jsx with actual IP
 
 ### 🔑 API Setup (IMPORTANT)
 
@@ -85,7 +86,7 @@ air
 **Terminal 2 - Frontend Development Server:**
 ```bash
 cd frontend
-npm run dev
+npm run dev -- --host
 ```
 
 ### 🌐 Access the Game
