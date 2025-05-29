@@ -1,32 +1,121 @@
-#
-1. AI CHAT GAME -> PROJECT MORDORIA
+# 🎭 Project Mordoria
+### AI-Powered Collaborative Chat Game
 
-# How does it work?
-1. Players can join a single room. As of this moment there are no multiple rooms.
-2. Once joined, players can write anything in the text box and provide an emotion
-   score from 0 to 10, which will determine the final response of the LLM.
-3. As soon as anyone in the chat room starts typing, all the chat messages with
-   the average emotion score will be send to an LLM after 30 seconds
-   from the first typed message. Once all the messages are sent, the LLM will
-   prepare a summary of those messages in a funny, sad, witty, sensual or very
-   mean way.
+> An innovative multiplayer chat experience where your messages and emotions combine to create AI-generated responses in various tones and styles.
 
-# Tech Stack.
-1. GO Backend
-2. JSX(react) frontend.
-3. Websockets for client server communication.
+---
 
-# IMPORTANT ->
-1. In order to play this please go to groq and create an API key.
-2. Create a .env file in your project's root directory.
-3. Put the API key as GROQ_API_KEY="your-api_key"
-4. Remember it is GROQ with a Q and not GROK with a K.
+## 🎮 How It Works
 
-# Steps to install and play.
-1. Clone this repo and install go-air.
-2. Go to project_mordoria/ and run go mod download.
-3. Go to project_mordoria/frontend and run npm install.
-4. Keep 2 tabs open in your tmux or terminal and in one, go to cmd/server and
-   run "air".
-5. On the another tab run npm run dev.
-6. Open the link shown after running npm run dev and you are good to go.
+**Project Mordoria** transforms ordinary chat into an extraordinary collaborative storytelling experience:
+
+1. **Join the Room** - All players connect to a single shared chat room
+2. **Express Yourself** - Write messages and assign emotion scores (0-10) to influence the AI's response style
+3. **Collaborative Magic** - When someone starts typing, a 30-second timer begins collecting all messages
+4. **AI Response** - After the timer expires, our AI processes all messages with their average emotion score
+5. **Dynamic Personalities** - The AI responds in various styles: funny, sad, witty, sensual, or mean - depending on your collective input
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Go with WebSocket support for real-time communication
+- **Frontend**: React (JSX) for a responsive user interface  
+- **Communication**: WebSockets for seamless client-server interaction
+- **AI Integration**: Groq API for intelligent response generation
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Go installed on your system
+- Node.js and npm
+- Air (Go live reload tool)
+
+### 🔑 API Setup (IMPORTANT)
+
+1. Visit [Groq](https://groq.com) and create an account
+2. Generate your API key
+3. Create a `.env` file in your project's root directory:
+   ```env
+   GROQ_API_KEY="your-api-key-here"
+   ```
+   
+   ⚠️ **Note**: It's **GROQ** with a "Q", not GROK with a "K"
+
+### 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd project_mordoria
+   ```
+
+2. **Install Go Air** (if not already installed)
+   ```bash
+   go install github.com/cosmtrek/air@latest
+   ```
+
+3. **Install Go dependencies**
+   ```bash
+   go mod download
+   ```
+
+4. **Install frontend dependencies**
+   ```bash
+   cd frontend
+   npm install
+   cd ..
+   ```
+
+### 🎯 Running the Application
+
+You'll need **two terminal tabs/windows**:
+
+**Terminal 1 - Backend Server:**
+```bash
+cd cmd/server
+air
+```
+
+**Terminal 2 - Frontend Development Server:**
+```bash
+cd frontend
+npm run dev
+```
+
+### 🌐 Access the Game
+
+Once both servers are running, open the URL displayed in your frontend terminal (typically `http://localhost:3000`) and start playing!
+
+---
+
+## 🎨 Features
+
+- **Real-time Collaboration** - See other players typing in real-time
+- **Emotion-Driven AI** - Your collective emotions shape the AI's personality
+- **Multiple Response Styles** - From hilarious to heartfelt, witty to wicked
+- **Single Room Experience** - All players share one dynamic chat space
+- **Instant Feedback** - 30-second response cycles keep the energy high
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit issues, feature requests, or pull requests.
+
+---
+
+## 📄 License
+
+This project is open source. Please check the license file for details.
+
+---
+
+## 🎭 Ready to Play?
+
+Join the chat, express your emotions, and watch as AI weaves your collective thoughts into something unexpected and entertaining!
+
+**Happy Gaming! 🚀**
