@@ -52,7 +52,7 @@ function ChatComponent() {
 		if (ws.current && ws.current.readyState === WebSocket.OPEN) {
 			ws.current.send(
 				JSON.stringify({
-					client_id: "kdkdk",
+					client_id: "mother_proompter",
 					payload: [
 						{
 							payload: clientMessages,
@@ -65,14 +65,15 @@ function ChatComponent() {
 			setClientMessages("");
 			set_ai_emot("");
 
-			if (typingTimer) {
-				clearTimeout(typingTimer);
-			}
+			// if (typingTimer) {
+			// 	clearTimeout(typingTimer);
+			// }
 			const timer = setTimeout(() => {
 				setMessages((prev) => {
 					if (prev.length > 0) {
 						sendAllChats(prev);
 					}
+					setTypingTimer(null);
 					return [];
 				});
 			}, 30000);
