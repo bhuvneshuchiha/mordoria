@@ -85,6 +85,13 @@ function ChatComponent() {
 		setIsLoading(true);
 		let sum = 0;
 		for (let i = 0; i < messagesArray.length; i++) {
+			if (isNaN(parseInt(messagesArray[i].ai_emot_score))) {
+				messagesArray[i].ai_emot_score = "0";
+			} else if (parseInt(messagesArray[i].ai_emot_score) > 10) {
+				messagesArray[i].ai_emot_score = "10";
+			} else if (parseInt(messagesArray[i].ai_emot_score) < 0) {
+				messagesArray[i].ai_emot_score = "0";
+			}
 			sum += parseInt(messagesArray[i].ai_emot_score);
 		}
 		console.log("Message array", messagesArray);
