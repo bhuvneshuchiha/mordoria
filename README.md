@@ -21,7 +21,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Go with WebSocket support for real-time communication
+- **Backend**: Golang with WebSocket support for real-time communication
 - **Frontend**: React (JSX) for a responsive user interface  
 - **Communication**: WebSockets for seamless client-server interaction
 - **AI Integration**: Groq API for intelligent response generation
