@@ -23,7 +23,6 @@ function ChatComponent() {
 		};
 
 		ws.current.onmessage = (event) => {
-			console.log("RAW event.data:", event.data);
 			let messageChat = JSON.parse(event.data);
 			setMessages((prev) => {
 				const updated = [...prev, ...messageChat];
@@ -94,10 +93,8 @@ function ChatComponent() {
 			}
 			sum += parseInt(messagesArray[i].ai_emot_score);
 		}
-		console.log("Message array", messagesArray);
 
 		const average_ai_emot_score = sum / messagesArray.length;
-		console.log("Average", average_ai_emot_score);
 
 		try {
 			const response = await axios.post(
@@ -114,9 +111,7 @@ function ChatComponent() {
 			setResponse(response.data.message);
 			setIsLoading(false);
 			setTimeout(() => setResponse(""), 60000);
-			console.log("Response", response.data);
 		} catch (error) {
-			console.log("Error: ", error);
 			setIsLoading(false);
 		}
 	};
