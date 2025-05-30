@@ -113,6 +113,13 @@ Please feel free to submit issues, feature requests, or pull requests.
 
 ---
 
+## 🙏 Mentorship
+
+Special thanks to [@Thomas Buckley-Houston](https://github.com/tombh) for providing me the motivation and support on this project.
+
+
+---
+
 ## 📄 License
 
 This project is open source. Please check the license file for details.
