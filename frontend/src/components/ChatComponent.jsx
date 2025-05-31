@@ -15,7 +15,7 @@ function ChatComponent() {
 	const ws = useRef(null);
 
 	useEffect(() => {
-		ws.current = new WebSocket("http://localhost:8081/ws/v1/mordoria");
+		ws.current = new WebSocket("https://mordoria.thebhuvnesh.com/ws/v1/mordoria");
 
 		ws.current.onopen = () => {
 			console.log("Connected to the go backend");
@@ -98,7 +98,7 @@ function ChatComponent() {
 
 		try {
 			const response = await axios.post(
-				"http://localhost:8081/v1/mordoria/chat_summarize",
+				"https://mordoria.thebhuvnesh.com/v1/mordoria/chat_summarize",
 				{
 					client_id: "1",
 					payload: messagesArray.map((m) => ({
