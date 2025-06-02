@@ -144,5 +144,9 @@ func SendDataToGroq() (string, error) {
 		return groqResponse.Choices[0].Message.Content, nil
 	}
 
+	// As the data Struct is a global variable, so its better to clear it once
+	// the summary is created so that the next messages can be stored fresh
+	DataStruct.MessageList = nil
+	DataStruct.AiScore = ""
 	return "", errors.New("No response from groq")
 }
