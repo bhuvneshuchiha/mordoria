@@ -10,9 +10,12 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"sync"
 
 	finalMessage "github.com/bhuvneshuhciha/project_mordoria/pkg/final_message"
 )
+
+var mu sync.Mutex = sync.Mutex{}
 
 type PreparedDataStruct struct {
 	MessageList []string
@@ -61,6 +64,8 @@ func BuildPromptFromStruct(data *PreparedDataStruct) (string, error) {
 }
 
 func PrepareData(msgPayload *finalMessage.FinalPayload, dataStruct *PreparedDataStruct) error {
+	mu.Lock()
+	defer mu.Unlock()
 	tempList := make([]string, 5)
 	averageScore := msgPayload.Ai_emot_score
 
