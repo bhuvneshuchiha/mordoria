@@ -15,7 +15,7 @@ function ChatComponent() {
 	const ws = useRef(null);
 
 	useEffect(() => {
-		ws.current = new WebSocket("https://mordoria.thebhuvnesh.com/ws/v1/mordoria");
+		ws.current = new WebSocket("wss://mordoria.thebhuvnesh.com/ws/v1/mordoria");
 
 		ws.current.onopen = () => {
 			console.log("Connected to the go backend");
