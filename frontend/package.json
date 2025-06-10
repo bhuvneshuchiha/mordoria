@@ -11,12 +11,11 @@
   },
   "dependencies": {
     "axios": "^1.9.0",
+    "canvas-confetti": "^1.9.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-transition-group": "^4.4.5",
-    "react-tsparticles": "^2.12.2",
-    "styled-components": "^6.1.18",
-    "tsparticles": "^3.8.1"
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
